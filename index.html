@@ -253,6 +253,7 @@
             display: flex;
             gap: 1.5rem;
             flex-wrap: wrap;
+            margin-top: 2rem;
             animation: fadeInUp 1s ease-out 0.7s backwards;
         }
 
@@ -268,6 +269,8 @@
             gap: 0.5rem;
             position: relative;
             overflow: hidden;
+            border: none;
+            cursor: pointer;
         }
 
         .btn-primary {
@@ -307,6 +310,22 @@
             background: rgba(255, 255, 255, 0.1);
             border-color: var(--accent);
             transform: translateY(-3px);
+        }
+
+        .btn-small {
+            font-size: 0.85rem;
+            padding: 0.7rem 1.4rem;
+        }
+
+        .btn-outline {
+            border: 1px solid #4b5563;
+            color: #e5e7eb;
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            border-color: #9ca3af;
+            background: rgba(148, 163, 184, 0.08);
         }
 
         @keyframes fadeInUp {
@@ -424,7 +443,7 @@
 
         .about-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1.3fr 1fr;
             gap: 5rem;
             align-items: center;
         }
@@ -454,7 +473,7 @@
             color: white;
             position: relative;
             overflow: hidden;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .cert-card::before {
@@ -471,6 +490,7 @@
 
         .cert-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 18px 40px rgba(15, 23, 42, 0.35);
         }
 
         .cert-card h4 {
@@ -484,6 +504,53 @@
             font-size: 0.9rem;
             opacity: 0.9;
             margin: 0;
+        }
+
+        .cert-card a {
+            margin-top: 0.9rem;
+            display: inline-flex;
+        }
+
+        /* Dedicated certifications section (below CV) */
+
+        .certifications-section {
+            padding: 6rem 3rem 8rem;
+            background: var(--dark);
+            color: var(--white);
+        }
+
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+            margin-top: 32px;
+        }
+
+        .cert-card-full {
+            background: #0b1020;
+            border: 1px solid #1f2937;
+            border-radius: 12px;
+            padding: 20px 24px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+
+        .cert-card-full:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+            border-color: #3b82f6;
+        }
+
+        .cert-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .cert-meta {
+            font-size: 0.9rem;
+            color: #9ca3af;
+            margin-bottom: 16px;
         }
 
         .skills-grid {
@@ -654,6 +721,25 @@
             color: white;
         }
 
+        /* CV section */
+
+        .cv-section {
+            background: #020617;
+            color: #e5e7eb;
+        }
+
+        .cv-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .cv-preview iframe {
+            border: 1px solid #1f2937;
+            border-radius: 8px;
+        }
+
         .contact-wrapper {
             max-width: 1000px;
             margin: 0 auto;
@@ -711,6 +797,52 @@
             color: var(--accent);
         }
 
+        /* Contact form (message) */
+
+        .contact-form-wrapper {
+            margin-top: 4rem;
+        }
+
+        .contact-form {
+            margin-top: 2rem;
+            max-width: 720px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+        }
+
+        .form-field {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 16px;
+        }
+
+        .form-field label {
+            font-size: 0.9rem;
+            color: #9ca3af;
+            margin-bottom: 6px;
+        }
+
+        .form-field input,
+        .form-field textarea {
+            background: #020617;
+            border: 1px solid #1f2937;
+            border-radius: 8px;
+            padding: 10px 12px;
+            color: #e5e7eb;
+            font-size: 0.95rem;
+        }
+
+        .form-field input:focus,
+        .form-field textarea:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.5);
+        }
+
         footer {
             background: var(--dark-soft);
             padding: 3rem;
@@ -744,6 +876,10 @@
             .skills-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 968px) {
@@ -751,7 +887,7 @@
                 padding: 5rem 2rem;
             }
 
-            .about-grid, .skills-grid, .projects-grid {
+            .skills-grid, .projects-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -761,6 +897,11 @@
 
             .floating-card {
                 display: none;
+            }
+
+            .cv-actions {
+                flex-direction: column;
+                align-items: flex-start;
             }
         }
 
@@ -792,7 +933,9 @@
             <div class="logo"><span>{</span> OTA <span>}</span></div>
             <ul>
                 <li><a href="#about">About</a></li>
+                <li><a href="#cv">CV</a></li>
                 <li><a href="#skills">Expertise</a></li>
+                <li><a href="#certifications-full">Certifications</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -857,23 +1000,126 @@
                 <div>
                     <div class="certifications-grid">
                         <div class="cert-card">
-                            <h4>AWS Solutions Architect</h4>
+                            <h4>AWS Certified Solutions Architect</h4>
                             <p>Professional</p>
                         </div>
                         <div class="cert-card">
-                            <h4>Kubernetes CKAD</h4>
-                            <p>Certified Developer</p>
+                            <h4>Certified Kubernetes Application Developer</h4>
+                            <p>CKAD</p>
                         </div>
                         <div class="cert-card">
-                            <h4>AWS Developer</h4>
+                            <h4>AWS Certified Developer</h4>
                             <p>Associate</p>
                         </div>
                         <div class="cert-card">
-                            <h4>AWS Solutions Architect</h4>
+                            <h4>AWS Certified Solutions Architect</h4>
                             <p>Associate</p>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CV SECTION -->
+    <section id="cv" class="section-dark cv-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">— CV</div>
+                <h2>Curriculum Vitae</h2>
+                <p class="section-subtitle">Download or preview my full CV as a Cloud Solutions Architect.</p>
+            </div>
+            <div class="cv-actions">
+                <a href="Omer_Taha_Cloud_Solutions_Architect.pdf"
+                   class="btn btn-primary"
+                   target="_blank">
+                    View CV (PDF)
+                </a>
+                <a href="Omer_Taha_Cloud_Solutions_Architect.pdf"
+                   class="btn btn-outline"
+                   download>
+                    Download CV
+                </a>
+            </div>
+            <div class="cv-preview">
+                <iframe
+                    src="Omer_Taha_Cloud_Solutions_Architect.pdf"
+                    title="Omer Taha - Cloud Solutions Architect CV"
+                    width="100%"
+                    height="600">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- FULL CERTIFICATIONS SECTION WITH CREDLY LINKS -->
+    <section id="certifications-full" class="certifications-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">— Certifications</div>
+                <h2>Verified Cloud Credentials</h2>
+                <p class="section-subtitle">Verifiable digital credentials issued via Credly.</p>
+            </div>
+            <div class="cert-grid">
+                <article class="cert-card-full fade-in">
+                    <h3 class="cert-title">
+                        AWS Certified Solutions Architect – Professional
+                    </h3>
+                    <p class="cert-meta">
+                        Issuer: Amazon Web Services
+                    </p>
+                    <a href="https://www.credly.com/earner/earned/badge/b0d907bb-6fe3-4c16-b77f-25f107b182c1"
+                       class="btn btn-small btn-primary"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        Verify on Credly
+                    </a>
+                </article>
+
+                <article class="cert-card-full fade-in">
+                    <h3 class="cert-title">
+                        AWS Certified Solutions Architect – Associate
+                    </h3>
+                    <p class="cert-meta">
+                        Issuer: Amazon Web Services
+                    </p>
+                    <a href="https://www.credly.com/earner/earned/badge/c9401317-ce81-4428-b224-c389580869c1"
+                       class="btn btn-small btn-primary"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        Verify on Credly
+                    </a>
+                </article>
+
+                <article class="cert-card-full fade-in">
+                    <h3 class="cert-title">
+                        AWS Certified Developer – Associate
+                    </h3>
+                    <p class="cert-meta">
+                        Issuer: Amazon Web Services
+                    </p>
+                    <a href="https://www.credly.com/earner/earned/badge/f116e2eb-001a-4ff7-bc23-6722b475d608"
+                       class="btn btn-small btn-primary"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        Verify on Credly
+                    </a>
+                </article>
+
+                <article class="cert-card-full fade-in">
+                    <h3 class="cert-title">
+                        AWS Certified Cloud Practitioner
+                    </h3>
+                    <p class="cert-meta">
+                        Issuer: Amazon Web Services
+                    </p>
+                    <a href="https://www.credly.com/earner/earned/badge/3fbfcabd-e48c-4099-a6ec-20536c8b0c71"
+                       class="btn btn-small btn-primary"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        Verify on Credly
+                    </a>
+                </article>
             </div>
         </div>
     </section>
@@ -1034,6 +1280,8 @@
                     <h2>Let's Build Something Great</h2>
                     <p class="section-subtitle">Available for cloud architecture consulting and full-time opportunities</p>
                 </div>
+
+                <!-- Contact details cards -->
                 <div class="contact-grid">
                     <div class="contact-card fade-in">
                         <div class="contact-icon">📧</div>
@@ -1056,6 +1304,46 @@
                         <a href="https://github.com/omer-taha-ahmed" target="_blank">github.com/omer-taha-ahmed</a>
                     </div>
                 </div>
+
+                <!-- Contact form -->
+                <div class="contact-form-wrapper">
+                    <h3 style="margin-top:3rem; font-size:1.4rem;">Send a Message</h3>
+                    <p style="color:#9ca3af; margin-bottom:1.5rem;">
+                        Use this form to reach out directly for projects, collaborations, or opportunities.
+                    </p>
+                    <form
+                        class="contact-form"
+                        action="YOUR_FORMSPREE_ENDPOINT"
+                        method="POST">
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label for="name">Name</label>
+                                <input id="name" name="name" type="text" required>
+                            </div>
+                            <div class="form-field">
+                                <label for="email">Email</label>
+                                <input id="email" name="email" type="email" required>
+                            </div>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="subject">Subject</label>
+                            <input id="subject" name="subject" type="text" required>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+
+                        <!-- Honeypot anti-spam -->
+                        <input type="text" name="_gotcha" style="display:none">
+
+                        <button type="submit" class="btn btn-primary">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
@@ -1065,7 +1353,9 @@
         <p style="margin-top: 0.5rem; opacity: 0.7;">Crafted with precision for cloud excellence</p>
         <div class="footer-links">
             <a href="#about">About</a>
+            <a href="#cv">CV</a>
             <a href="#skills">Skills</a>
+            <a href="#certifications-full">Certifications</a>
             <a href="#projects">Projects</a>
             <a href="#contact">Contact</a>
         </div>
@@ -1087,8 +1377,11 @@
 
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                const target = document.querySelector(targetId);
+                if (!target) return;
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href'))?.scrollIntoView({
+                target.scrollIntoView({
                     behavior: 'smooth',
                     block: 'start'
                 });
